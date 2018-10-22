@@ -1,24 +1,44 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("How many Test case : ");
+
+        int test_case = scanner.nextInt();
+
+        int[] count = new int[test_case];
+        
+        for(int terms =0 ; terms < test_case ; terms++){
+
+            count[terms] = count();
+        }
+
+        for(int terms =0 ; terms < test_case ; terms++){
+
+            System.out.println("case "+ (terms+1) + " " + " : " + count[terms]);
+        }
+
+    }
+
+    private static int count() {
+
         Scanner scanner = new Scanner(System.in);
         int triplet_count = 0;
-        int i , j , k, total;
+        int i , j;
 
-        int[] array = new int[3];
+        System.out.println("No of Elements : ");
+        int elements = scanner.nextInt();
+
+        int[] array = new int[elements];
         int[] b = new int[array.length];
-        int[][] value = new int[3][3];
-        int[][] multi_array = new int[(array.length)][(array.length)];
+        int[][] value = new int[array.length][array.length];
 
         // array input
 
@@ -43,20 +63,15 @@ public class Main {
             }
         }
 
-        for (i=0;i<array.length;i++){
-
-            for(j=0;j<b.length;j++){
-
-                System.out.println(""+value[i][j]);
-            }
-        }
-
         for (i = 0 ; i<array.length ; i++){
 
             for(j =0 ; j<array.length; j++){
 
                 if(array[j] == value[0][i]){
 
+                    // it is printing the matched elements
+
+                    System.out.println("" + value[0][i]);
                     triplet_count = triplet_count +1;
                 }
             }
@@ -68,11 +83,14 @@ public class Main {
 
                 if(array[j] == value[1][i]){
 
+                    // it is printing the matched elements
+
+                    System.out.println("" + value[1][i]);
                     triplet_count = triplet_count +1;
                 }
             }
         }
 
-        System.out.println("trplet count = "+triplet_count);
+        return  triplet_count ;
     }
 }
